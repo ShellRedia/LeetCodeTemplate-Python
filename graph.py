@@ -20,6 +20,7 @@ while dq:
     dq.popleft()
     for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
         nx, ny = x + dx, y + dy
-        if 0 <= nx < m and 0 <= ny < n and grid[nx][ny] == 1 and (nx, ny) not in vis:
+        cond = (grid[nx][ny] == 1) # 一些可能的其他条件，可替换
+        if 0 <= nx < m and 0 <= ny < n and (nx, ny) not in vis and cond:
             dq.append((nx, ny))
             vis.add((nx, ny))
