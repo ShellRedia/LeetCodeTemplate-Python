@@ -30,7 +30,7 @@ while dq:
 
 # 最短路径 
 # Dijkstra: -- 单源无负权 -- :
-from sortedcontainers import *
+# 最开始定义: from sortedcontainers import *
 
 g = defaultdict(list)
         
