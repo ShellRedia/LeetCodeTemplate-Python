@@ -11,7 +11,7 @@ hvs1[i+1] = (hvs1[i] * base1 + ecd[s[i]]) % MOD
 hvs2[i+1] = (hvs2[i] * base2 + ecd[s[i]]) % MOD
 pow1[i+1] = (pow1[i] * base1) % MOD
 pow2[i+1] = (pow2[i] * base2) % MOD
-# 获取子串哈希值，元组形式返回:
+# 获取子串s[start:end]哈希值，元组形式返回:
 def get_hash(start, end):
     hash_1 = (hvs1[end] - hvs1[start] * pow1[end-start]) % MOD
     hash_2 = (hvs2[end] - hvs2[start] * pow2[end-start]) % MOD
