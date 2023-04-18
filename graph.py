@@ -47,7 +47,7 @@ def get_dist(src):
         ss.remove((d,x))
         if d > dist[x] or dist[x] == inf:
             continue
-        for y, cost in table[x]:
+        for y, cost in g[x]:
             if dist[x] + cost < dist[y]:
                 dist[y] = dist[x] + cost
                 ss.add((dist[y], y))
