@@ -29,7 +29,7 @@ while dq:
 # 深度优先搜索: TODO
 
 # 最短路径 
-# Dijkstra: -- 单源无负权 --， 适合于修改少，查询多的情况: 
+# Dijkstra: -- 单源无负权 -> 适合于修改少，查询多的情况: 
 # 开头需要import平衡树: from sortedcontainers import *
 
 g = defaultdict(list)
@@ -58,7 +58,7 @@ def get_dist(src):
 src = 0            
 dist = get_dist(src) # src 到各个点的距离，保存为数组形式
 
-# Floyd:
+# Floyd 单源无负权 -> 适合于点数少，修改多的情况:
 # 建图
 d = [[inf] * n for _ in range(n)]
 for i in range(n):
