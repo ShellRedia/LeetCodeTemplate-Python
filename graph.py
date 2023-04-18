@@ -29,14 +29,14 @@ while dq:
 # 深度优先搜索: TODO
 
 # 最短路径 
-# Dijkstra: -- 单源无负权 -- :
-# 开头需要impo: from sortedcontainers import *
+# Dijkstra: -- 单源无负权 --， 适合于修改少，查询多的情况: 
+# 开头需要import平衡树: from sortedcontainers import *
 
 g = defaultdict(list)
         
-for x, y, v in edges:
-    g[x].append((y, v))
-    # g[y].append((x, v)) # 无向图
+for x, y, w in edges:
+    g[x].append((y, w))
+    # g[y].append((x, w)) # 无向图
 
 def get_dist(src):
     dist=[inf]*n
@@ -57,3 +57,25 @@ def get_dist(src):
 
 src = 0            
 dist = get_dist(src) # src 到各个点的距离，保存为数组形式
+
+# Floyd:
+# 建图
+d = [[inf] * n for _ in range(n)]
+for i in range(n):
+    d[i][i] = 0
+for x, y, w in edges:
+    d[x][y] = w  # 添加一条边（输入保证没有重边和自环）
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            d[i][j] = min(d[i][j], d[i][k] + d[k][j])
+# 加边
+x, y, w = edge
+if w >= d[x][y]:  # 无需更新
+    return
+for i in range(n):
+    for j in range(n):
+        d[i][j] = min(d[i][j], d[i][x] + w + d[y][j])
+# 求最短路
+src, tgt = 0, 1
+dist = d[src][tgt]
