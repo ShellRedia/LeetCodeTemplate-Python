@@ -32,9 +32,9 @@ while dq:
 # Dijkstra: -- 单源无负权 -- :
 g = defaultdict(list)
         
-for s, t, v in edges:
-    g[s].append((t,v+1))
-    # g[t].append((s,v+1)) # 无向图
+for x, y, v in edges:
+    g[x].append((y, v+1))
+    # g[y].append((x, v+1)) # 无向图
 
 def get_dist(src):
     dist=[inf]*n
