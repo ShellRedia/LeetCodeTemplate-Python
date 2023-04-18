@@ -30,11 +30,13 @@ while dq:
 
 # 最短路径 
 # Dijkstra: -- 单源无负权 -- :
+from sortedcontainers import *
+
 g = defaultdict(list)
         
 for x, y, v in edges:
-    g[x].append((y, v+1))
-    # g[y].append((x, v+1)) # 无向图
+    g[x].append((y, v))
+    # g[y].append((x, v)) # 无向图
 
 def get_dist(src):
     dist=[inf]*n
