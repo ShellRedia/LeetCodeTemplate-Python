@@ -19,7 +19,7 @@ vis = set()
 while dq:
     x, y = dq[0]
     dq.popleft()
-    for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)] + [(1, 1), (-1, -1), (1, -1), (-1, 1)]:
+    for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]: # + [(1, 1), (-1, -1), (1, -1), (-1, 1)]:
         nx, ny = x + dx, y + dy
         if 0 <= nx < m and 0 <= ny < n and (nx, ny) not in vis:
             if grid[nx][ny] == 1: # 一些可能的其他条件，可替换
