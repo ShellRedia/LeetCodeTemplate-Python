@@ -15,11 +15,16 @@ options = [["C", "D", "E"], ["H", "I"]] # 可供填写的选项（离散化处�
 get_fill_pos = {x:i for i, x in enumerate(fill_positions)} # 解离散化
 def permutation_options(idx):
     if idx == len(template):
-        perm.append(rt)
+        perm.append(rt.copy())
         return 
     if idx in get_fill_pos.keys():
         for x in options[get_fill_pos[idx]]:
             rt.append(x)
             permutation_options(idx+1)
             rt.pop()
+    else:
+        rt.append(template[idx])
+        permutation_options(idx+1)
+        rt.pop()
 permutation_options(0)
+result = perm
