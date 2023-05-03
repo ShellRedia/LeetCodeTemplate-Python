@@ -19,6 +19,7 @@ def permutation_options(idx):
         return 
     if idx in get_fill_pos.keys():
         for x in options[get_fill_pos[idx]]:
-            stk.append(x)
-            dfs(i+1)
-            stk.pop()
+            rt.append(x)
+            permutation_options(idx+1)
+            rt.pop()
+permutation_options(0)
