@@ -30,3 +30,13 @@ def permutation_options(idx): # 参数：idx: 当前正在填写的索引
         rt.pop()
 permutation_options(0)
 result = perm
+
+# 二叉树
+fa_dct = {}
+def f(o, d, fa):
+    if not o:
+        return
+    fa_dct[o] = fa
+    f(o.left, d+1, o)
+    f(o.right, d+1, o)
+f(root, 0, None)
