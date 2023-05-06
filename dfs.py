@@ -43,5 +43,5 @@ def f(o, d, fa):
     elif o.left and not o.right:
         f(o.left, d+1, o)
     elif not o.left and o.right:
-        f(o.left, d+1, o)
+        f(o.right, d+1, o)
 f(root, 0, None)
