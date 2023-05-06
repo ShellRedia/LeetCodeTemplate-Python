@@ -37,6 +37,11 @@ def f(o, d, fa):
     if not o:
         return
     fa_dct[o] = fa
-    f(o.left, d+1, o)
-    f(o.right, d+1, o)
+    if o.left and o.right:
+        f(o.left, d+1, o)
+        f(o.right, d+1, o)
+    elif o.left and not o.right:
+        f(o.left, d+1, o)
+    elif not o.left and o.right:
+        f(o.left, d+1, o)
 f(root, 0, None)
