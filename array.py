@@ -21,6 +21,19 @@ def permuteUnique(nums):
     backtracking(sorted(nums),used,[])
     return res
 
+# 最长递增子序列(LIS)
+def lengthOfLIS(nums: List[int]) -> int:
+    sl = SortedList()
+    for i, x in enumerate(nums):
+        idx = sl.bisect_right((x, -i))
+        if idx == len(sl):
+            sl.add((x, -i))
+        else:
+            del sl[idx]
+            sl.add((x, -i))
+            # sl[idx] = (x, -i)
+    return len(sl)
+
 # 循环码(返回二进制字符串列表，参数n为二进制长度):
 def cyclic_code(n):
     if n < 0:
