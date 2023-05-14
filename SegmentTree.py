@@ -1,3 +1,4 @@
+# 抄的板子，初始索引为0， 查询修改的区间范围为[L, R]的闭区间
 class LazySegmentTree:
     def __init__(self, nums: List[int]):
         self.n = len(nums)
