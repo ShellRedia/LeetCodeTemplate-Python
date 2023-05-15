@@ -36,7 +36,14 @@ for i in range(1, n + 1):
     for j in range(1, m + 1):
         diff[i][j] += diff[i][j - 1] + diff[i - 1][j] - diff[i - 1][j - 1]
 mat = diff
-    
+
+# 离散化
+def discretize_dict(nums):
+    s = set(nums)
+    dct = dict(zip(sorted(s), range(len(s))))
+    return dct
+dct = discretize_dict(nums)
+disc_arr = [dct[x] for x in nums]
 
 # 最长递增子序列(LIS)
 from sortedcontainers import *
