@@ -22,16 +22,16 @@ def permuteUnique(nums):
     return res
 
 # 最长递增子序列(LIS)
+from sortedcontainers import *
 def lengthOfLIS(nums: List[int]) -> int:
     sl = SortedList()
     for i, x in enumerate(nums):
-        idx = sl.bisect_right((x, -i))
-        if idx == len(sl):
+        pos = sl.bisect_right((x, -i))
+        if pos == len(sl):
             sl.add((x, -i))
         else:
-            del sl[idx]
+            del sl[pos]
             sl.add((x, -i))
-            # sl[idx] = (x, -i)
     return len(sl)
 
 # 循环码(返回二进制字符串列表，参数n为二进制长度):
