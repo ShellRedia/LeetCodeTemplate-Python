@@ -62,7 +62,7 @@ def lengthOfLIS(nums: List[int]) -> int:
 def minMove(nums):
     acc = [0] + list(accumulate(nums))
     n = len(nums)
-    return acc[i] + acc[i+n] - 2 * acc[n//2] - nums[n//2] * (n & 1)
+    return acc[0] + acc[n] - 2 * acc[n//2] - nums[n//2] * (n & 1)
 
 # 循环码(返回二进制字符串列表，参数n为二进制长度):
 def cyclic_code(n):
