@@ -58,7 +58,7 @@ def lengthOfLIS(nums: List[int]) -> int:
             sl.add((x, -i))
     return len(sl)
 
-# 中位数贪心, 以数组 nums = [1,3,4,5,8] 为例，每次加减1，求将数组中的数变为同一个数的最小代价：
+# 中位数贪心, 以数组 nums = [1,3,4,5,8] 为例，每次加减1，求将数组中的数变为同一个数的最小代价 LeetCode: 462. 最小操作次数使数组元素相等：
 def minMove(nums):
     acc = [0] + list(accumulate(nums))
     n = len(nums)
