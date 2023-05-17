@@ -80,7 +80,7 @@ for i in range(n):
 src, tgt = 0, 1
 dist = d[src][tgt]
 
-# 拓扑排序, 入参 n: 点数，contrains -> c, pc : 一个列表，表示节点和其前置节点 
+# 拓扑排序, 入参 n: 节点数量，contrains -> c, pc : 一个列表，表示节点和其前置节点 
 from graphlib import *
 def topo_sort(n, constrains):
     ts = TopologicalSorter({c:{} for c in range(n)})
