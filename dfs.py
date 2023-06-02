@@ -36,28 +36,34 @@ lv_dct, cd_dct = {}, {}
 left_s, right_s = set(), set()
 fa_dct, left_bro, right_bro = defaultdict(), defaultdict(), defaultdict()
 vals = []
+cnts = Counter()
 def f(o, lv, cd, fa):
+    cnt = 0
     if not o:
-        return
+        return cnt
+
     fa_dct[o] = fa
     lv_dct[o] = lv
     cd_dct[cd] = o
     vals.append(o.val)
     if o.left and o.right:
-        f(o.left, lv + 1, cd * 2, o)
-        f(o.right, lv + 1, cd * 2 + 1, o)
+        cnt += f(o.left, lv + 1, cd * 2, o)
+        cnt += f(o.right, lv + 1, cd * 2 + 1, o)
         left_s.add(o.left)
         right_s.add(o.right)
         left_bro[o.right] = o.left
         right_bro[o.left] = o.right
 
+
     elif o.left and not o.right:
-        f(o.left, lv + 1, cd * 2, o)
+        cnt += f(o.left, lv + 1, cd * 2, o)
         left_s.add(o.left)
     elif not o.left and o.right:
-        f(o.right, lv + 1, cd * 2 + 1, o)
+        cnt += f(o.right, lv + 1, cd * 2 + 1, o)
         right_s.add(o.right)
     else:
         pass
+    cnts[o] = cnt
+    return cnt
 
 f(root, 0, 1, None)
