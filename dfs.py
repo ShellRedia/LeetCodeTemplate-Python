@@ -35,13 +35,14 @@ result = perm
 lv_dct, cd_dct = {}, {}
 left_s, right_s = set(), set()
 fa_dct, left_bro, right_bro = defaultdict(), defaultdict(), defaultdict()
-
+vals = []
 def f(o, lv, cd, fa):
     if not o:
         return
     fa_dct[o] = fa
     lv_dct[o] = lv
     cd_dct[cd] = o
+    vals.append(o.val)
     if o.left and o.right:
         f(o.left, lv + 1, cd * 2, o)
         f(o.right, lv + 1, cd * 2 + 1, o)
