@@ -31,17 +31,22 @@ def permutation_options(idx): # 参数：idx: 当前正在填写的索引
 permutation_options(0)
 result = perm
 
-# 二叉树
-fa_dct = {}
-def f(o, d, fa):
+# 二叉树遍历，前序遍历，lv: 层数(level, 从0开始); cd: 编号(code, 兄弟节点，右节点比左节点+1)
+fa_dct, lv_dct, cd_dct = {}, {}, {}
+def f(o, lv, cd, fa):
     if not o:
         return
     fa_dct[o] = fa
+    lv_dct[o] = lv
+    cd_dct[cd] = o
     if o.left and o.right:
-        f(o.left, d+1, o)
-        f(o.right, d+1, o)
+        f(o.left, lv+1, cd*2, o)
+        f(o.right, lv+1, cd*2+1, o)
     elif o.left and not o.right:
-        f(o.left, d+1, o)
+        f(o.left, lv+1, cd*2, o)
     elif not o.left and o.right:
-        f(o.right, d+1, o)
-f(root, 0, None)
+        f(o.right, lv+1, cd*2+1, o)
+    else:
+        pass
+
+f(root, 0, 1, None)
