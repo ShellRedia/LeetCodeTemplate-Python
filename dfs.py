@@ -32,7 +32,10 @@ permutation_options(0)
 result = perm
 
 # 二叉树遍历，前序遍历，lv: 层数(level, 从0开始); cd: 编号(code, 兄弟节点，右节点比左节点+1)
-fa_dct, lv_dct, cd_dct = {}, {}, {}
+lv_dct, cd_dct = {}, {}
+left_s, right_s = set(), set()
+fa_dct, left_bro, right_bro = defaultdict(), defaultdict(), defaultdict()
+
 def f(o, lv, cd, fa):
     if not o:
         return
@@ -40,12 +43,19 @@ def f(o, lv, cd, fa):
     lv_dct[o] = lv
     cd_dct[cd] = o
     if o.left and o.right:
-        f(o.left, lv+1, cd*2, o)
-        f(o.right, lv+1, cd*2+1, o)
+        f(o.left, lv + 1, cd * 2, o)
+        f(o.right, lv + 1, cd * 2 + 1, o)
+        left_s.add(o.left)
+        right_s.add(o.right)
+        left_bro[o.right] = o.left
+        right_bro[o.left] = o.right
+
     elif o.left and not o.right:
-        f(o.left, lv+1, cd*2, o)
+        f(o.left, lv + 1, cd * 2, o)
+        left_s.add(o.left)
     elif not o.left and o.right:
-        f(o.right, lv+1, cd*2+1, o)
+        f(o.right, lv + 1, cd * 2 + 1, o)
+        right_s.add(o.right)
     else:
         pass
 
