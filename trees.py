@@ -12,8 +12,8 @@ class Trie:
     def insert(self, arr) -> None:
         cur = self.head
         for x in arr:
-            if not cur.children[x]:
-                cur.children[x] = TrieNode(x)
+            if x not in cur.children.keys():
+                cur.children[x] = TrieNode()
             cur = cur.children[x]
             cur.cnt += 1
 
@@ -21,8 +21,8 @@ class Trie:
         cur = self.head
         rnt = 0
         for x in arr:
-            if not cur.children[x]:
-                return False
+            if x not in cur.children.keys():
+                return 0
             cur = cur.children[x]
             rnt = cur.cnt
         for x in cur.children.values():
@@ -33,7 +33,7 @@ class Trie:
         cur = self.head
         rnt = 0
         for x in prefix:
-            if not cur.children[x]:
+            if x not in cur.children.keys():
                 return 0
             cur = cur.children[x]
             rnt = cur.cnt
