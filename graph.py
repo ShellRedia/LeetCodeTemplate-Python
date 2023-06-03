@@ -30,7 +30,8 @@ while dq:
 
 # 最短路径 
 # Dijkstra: -- 单源无负权 -> 适合于修改少，查询多的情况: 
-# 开头需要import平衡树: from sortedcontainers import *
+# 开头需要import平衡树:
+from sortedcontainers import *
 
 g = defaultdict(list)
         
