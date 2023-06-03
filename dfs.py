@@ -32,6 +32,7 @@ permutation_options(0)
 result = perm
 
 # 二叉树遍历，前序遍历，lv: 层数(level, 从0开始); cd: 编号(code, 兄弟节点，右节点比左节点+1)
+# 看着很长，但是包括了左右节点和父节点的相互关系，以及自己有多少的子节点，因此考虑了各种情况下，能够尽可能节省时间
 lv_dct, cd_dct = {}, {}
 left_s, right_s = set(), set()
 fa_dct, left_bro, right_bro = defaultdict(), defaultdict(), defaultdict()
@@ -53,7 +54,6 @@ def f(o, lv, cd, fa):
         right_s.add(o.right)
         left_bro[o.right] = o.left
         right_bro[o.left] = o.right
-
 
     elif o.left and not o.right:
         cnt += f(o.left, lv + 1, cd * 2, o)
