@@ -67,3 +67,33 @@ def f(o, lv, cd, fa):
     return cnt
 
 f(root, 0, 1, None)
+
+# 数位DP:
+'''
+mask: 是否选过; 
+isLimit: 表示当前是否受到了 n 的约束(注意要构造的数字不能超过 n);
+isNum: 表示 i 前面的数位是否填了数字;
+cnt: 数位之和，也可表示其他约束条件，需要自行改造。
+'''
+
+def digit_dp(s):
+    @cache
+    def f(i: int, mask: int, is_limit: bool, is_num: bool, cnt) -> int:
+        if i == len(s):
+            flag = (cnt > 0) # 比如还有一个约束条件，数位和大于 0
+            return int(is_num and flag)  # is_num 为 True 表示得到了一个合法数字
+        res = 0
+        if not is_num:  # 可以跳过当前数位
+            res = f(i + 1, mask, False, False, cnt)
+        low = 0 if is_num else 1  # 如果前面没有填数字，必须从 1 开始（因为不能有前导零）
+        up = int(s[i]) if is_limit else 9  # 如果前面填的数字都和 n 的一样，那么这一位至多填 s[i]（否则就超过 n 啦）
+        for d in range(low, up + 1):  # 枚举要填入的数字 d
+            # 如果不能重复选:
+            if (mask >> d & 1) == 0:  # d 不在 mask 中
+                res += f(i + 1, mask | (1 << d), is_limit and d == up, True, cnt + d) # 统计一共有多少个 1: ... True ,cnt + int(d == 1))
+            # 如果可以重复选:
+            # res += f(i + 1, mask, is_limit and d == up, True, cnt + d)
+        return res
+    return f(0, 0, True, False, 0)
+num = 114514
+digit_dp(str(num))
