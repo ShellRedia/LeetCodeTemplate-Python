@@ -1,6 +1,6 @@
 # LeetCodeTemplate-Python
 
-![ContestScore](2023_06_06.png)
+![ContestScore](./2023_06_06.png)
 
 力扣未解之谜：
 
