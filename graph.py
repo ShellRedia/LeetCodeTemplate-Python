@@ -90,3 +90,16 @@ def topo_sort(n, constrains):
     if ts._find_cycle():
         return []
     return list(ts.static_order())
+
+# 树的直径(包括二叉树):
+diameter, node_t = 0, None
+def dfs(x, fa, d):
+    nonlocal diameter, node_t
+    if d > diameter:
+        diameter, node_t = d, x
+    for y in g[x]:
+        if y != fa:
+            dfs(y, x, d + 1)
+dfs(root, None, 0)
+dfs(node_t, None, 0)
+diameter

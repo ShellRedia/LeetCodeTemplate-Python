@@ -27,3 +27,15 @@ def get_prime_factors(n):
     if n > 1:
         factors.append(n)
     return factors
+
+# 将 10 进制数字转换为任意的 k进制字符串:
+def convert_to_base_k(number: int, k: int) -> str:
+    if number == 0:
+        return '0'
+    flag = '-' if number < 0 else ''
+    number = abs(number)
+    result = ''
+    while number > 0:
+        number, remainder = divmod(number, k)
+        result = str(remainder) + result
+    return flag + result
