@@ -14,16 +14,17 @@ N = 10 ** 5 + 1
 p = list(range(N))
 
 # 广度优先搜索:
+import numpy as np
 m, n = len(grid), len(grid[0])
-dq = deque()
+dq = deque([(x, y, 0) for x, y in np.argwhere(np.array(grid) == 1)])
 vis = set()
 while dq:
-    x, y = dq.popleft()
+    x, y, d = dq.popleft()
     for dx, dy in (0, 1), (1, 0), (0, -1), (-1, 0): # (1, 1), (-1, -1), (1, -1), (-1, 1):
         nx, ny = x + dx, y + dy
         if 0 <= nx < m and 0 <= ny < n and (nx, ny) not in vis:
             if grid[nx][ny] == 1: # 一些可能的其他条件，可替换
-                dq.append((nx, ny))
+                dq.append((nx, ny, d+1))
                 vis.add((nx, ny))
             
 # 深度优先搜索: TODO
