@@ -1,18 +1,18 @@
 from collections import *
 # 并查集
 def find(x):
-    if p[x] != x:
-        p[x] = find(p[x])
+    if p[x] != x:p[x] = find(p[x])
     return p[x]
-
 def merge(a, b):
     x, y = find(a), find(b)
-    if x == y:
-        return
+    if x == y:return
     p[x] = y
+# 一维初始化
 N = 10 ** 5 + 1
 p = list(range(N))
-
+# 二维初始化
+p = np.empty((m, n), dtype=tuple) # import numpy as np
+for i, x in np.ndenumerate(p): p[i] = i
 # 广度优先搜索:
 import numpy as np
 m, n = len(grid), len(grid[0])
