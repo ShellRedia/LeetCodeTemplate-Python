@@ -18,8 +18,8 @@ g = defaultdict(list) #邻接表
 
 def f(o, level, code, father):
     children_cnt = 0
-    if not o:
-        return children_cnt
+    if not o: return children_cnt
+
     node2level[o] = level
     level2nodes[level].append(o)
     node2code[o] = code
@@ -27,8 +27,7 @@ def f(o, level, code, father):
     node2father[o] = father
     preorder.append(o)
 
-    if father:
-        g[o].append(father)
+    if father: g[o].append(father)
 
     if o.left and o.right:
         children_cnt += f(o.left, level + 1, code * 2, o)
@@ -48,8 +47,7 @@ def f(o, level, code, father):
         children_cnt += f(o.right, level + 1, code * 2 + 1, o)
         rightnodes.add(o.right)
         g[o].append(o.right)
-    else:
-        leaves.add(o)
+    else: leaves.add(o)
     postorder.append(o)
     children_counts[o] = children_cnt
     return children_cnt + 1
