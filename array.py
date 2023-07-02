@@ -10,15 +10,14 @@ def permuteUnique(nums):
             return
         for i in range(len(nums)):
             if not used[i]:
-                if i>0 and nums[i] == nums[i-1] and not used[i-1]:
-                    continue
+                if i > 0 and nums[i] == nums[i-1] and not used[i-1]: continue
                 used[i] = 1
                 path.append(nums[i])
                 backtracking(nums, used, path)
                 path.pop()
                 used[i] = 0
     # 记得给nums排序
-    backtracking(sorted(nums),used,[])
+    backtracking(sorted(nums), used, [])
     return res
 
 # 二维差分:快速地把一个矩形范围内的数都 + x
