@@ -18,21 +18,18 @@ head = Array2ListNode(arr)
 
 # 数组转BST(二叉搜索树):
 def Array2BST(arr):
-    if not arr:
-        return None
+    if not arr: return None
     root = TreeNode(arr[0])
     for x in arr[1:]:
         o = root
         while o:
             if x > o.val:
-                if o.right:
-                    o = o.right
+                if o.right: o = o.right
                 else:
                     o.right = TreeNode(x)
                     break
             else:
-                if o.left:
-                    o = o.left
+                if o.left: o = o.left
                 else:
                     o.left = TreeNode(x)
                     break

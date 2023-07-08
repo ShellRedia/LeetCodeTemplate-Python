@@ -50,8 +50,7 @@ def lengthOfLIS(nums: List[int]) -> int:
     sl = SortedList()
     for i, x in enumerate(nums):
         pos = sl.bisect_right((x, -i))
-        if pos == len(sl):
-            sl.add((x, -i))
+        if pos == len(sl): sl.add((x, -i))
         else:
             del sl[pos]
             sl.add((x, -i))
@@ -69,6 +68,15 @@ def cyclic_code(n):
     if n < 0:
         return []
     codes = ['0', '1']
-    for i in range(n - 1):
-        codes = [code + '0' for code in codes] + [code + '1' for code in reversed(codes)]
+    for i in range(n - 1): codes = [code + '0' for code in codes] + [code + '1' for code in reversed(codes)]
     return codes
+
+# josephus 问题: k间隔pick循环数组元素的顺序,模拟法
+from sortedcontainers import *
+def josephus(arr, k):
+    arr = SortedList(arr)
+    rnt, c = [], 0
+    while arr:
+        c = (c + k - 1) % len(arr)
+        rnt.append(arr.pop(c))
+    return rnt
