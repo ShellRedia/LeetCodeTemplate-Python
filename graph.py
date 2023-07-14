@@ -18,18 +18,18 @@ for i, x in np.ndenumerate(p): p[i] = i
 # 广度优先搜索:
 import numpy as np
 grid = np.array(grid)
-m, n = grid.shape
-dq = deque([(x, y, 0) for x, y in np.argwhere(grid == 1)])
-vis = set()
+# m, n = grid.shape
+s = set(product(*[range(x) for x in grid.shape])) # 判断是否越界
+dq = deque([(p, 0) for p in np.argwhere(grid == 1)])
 while dq:
-    x, y, d = dq.popleft()
-    for dx, dy in (0, 1), (1, 0), (0, -1), (-1, 0): # (1, 1), (-1, -1), (1, -1), (-1, 1):
-        nx, ny = x + dx, y + dy
-        if 0 <= nx < m and 0 <= ny < n and (nx, ny) not in vis:
-            if grid[nx][ny] == 1: # 一些可能的其他条件，可替换
-                dq.append((nx, ny, d+1))
-                vis.add((nx, ny))
-            
+    p, d = dq.popleft()
+    for pd in product(*[range(-1, 2)] * len(grid.shape)):
+        if abs(sum(pd)) == 1:
+            t = tuple(map(lambda x: sum(x), zip(p, pd)))
+            if t in s and grid[t] > d + 1:
+                grid[t] = d + 1
+                dq.append((t, d + 1))
+
 # 深度优先搜索: TODO
 
 # 最短路径 
