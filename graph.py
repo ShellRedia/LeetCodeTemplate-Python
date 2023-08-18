@@ -2,9 +2,12 @@ from collections import *
 from itertools import *
 # 并查集
 import numpy as np
+class IdentityDefaultDict(defaultdict):
+    def __missing__(self, key):
+        return key
 class UnionFind:
     def __init__(self):
-        self.parent = defaultdict(lambda:None)
+        self.parent = IdentityDefaultDict()
     def find(self, x):
         if self.parent[x] != x: self.parent[x] = self.find(self.parent[x])
         return self.parent[x]
@@ -38,7 +41,6 @@ class GridSearch:
 
 # 最短路径 
 # Dijkstra: -- 单源无负权 -> 适合于修改少，查询多的情况:
-from sortedcontainers import *
 class Dijkstra:
     def __init__(self, edges, undirected=True):
         self.g = defaultdict(list)
@@ -48,13 +50,13 @@ class Dijkstra:
     def get_dist(self, src=0):
         dist = defaultdict(lambda : inf)
         dist[src] = 0
-        ss = SortedSet([(dist[src], src)])
-        while ss:
-            d, x = ss.pop(0)
+        sl = [(dist[src], src)]
+        while sl:
+            d, x = heappop(sl)
             for y, cost in self.g[x]:
                 if dist[x] + cost < dist[y]:
                     dist[y] = dist[x] + cost
-                    ss.add((dist[y], y))
+                    heappush(sl, (dist[y], y))
         return dist
 
 
@@ -90,18 +92,17 @@ class Floyd:
         self.nodes.add(y)
         return d[(x, y)]
 
-from sortedcontainers import *
 class Hierholzer:
     def __init__(self, edges, undirected=True):
-        self.g = defaultdict(SortedList)
+        self.g = defaultdict(list)
         for x, y in edges:
-            self.g[x].add(y)
-            if undirected: self.g[y].add(x)
+            heappush(self.g[x], y)
+            if undirected: heappush(self.g[y], x)
     def get_path(self, src=0):
         g = deepcopy(self.g)
         path = []
         def dfs(x):
-            while g[x]: dfs(g[x].pop(0))
+            while g[x]: dfs(heappop(g[x]))
             path.append(x)
         dfs(src)
         return path[::-1]

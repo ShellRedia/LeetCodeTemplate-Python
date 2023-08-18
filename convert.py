@@ -1,20 +1,27 @@
 # 链表转数组:
-def ListNode2Array(head):
-    arr = []
-    while head:
-        arr.append(head.val)
-        head = head.next
-    return arr
-arr = ListNode2Array(head)
-
-# 数组转链表:
-def Array2ListNode(arr):
-    cur = head = ListNode()
-    for x in arr:
-        cur.next = ListNode(x)
-        cur = cur.next
-    return head.next
-head = Array2ListNode(arr)
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class ListNodeConvert:
+    def ln2arr(self, head):
+        arr = []
+        while head:
+            arr.append(head.val)
+            head = head.next
+        return arr
+    def arr2ln(self, arr):
+        cur = head = ListNode()
+        for x in arr:
+            cur.next = ListNode(x)
+            cur = cur.next
+        return head.next
+    def ln_assign(self, head, arr):
+        i = 0
+        while head and i < len(arr):
+            head.val = arr[i]
+            head = head.next
+            i += 1
 
 # 数组转BST(二叉搜索树):
 def Array2BST(arr):
