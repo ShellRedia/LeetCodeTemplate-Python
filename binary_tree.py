@@ -1,11 +1,11 @@
-from collections import *
-
-# 二叉树问题
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+# from collections import *
+#
+# # 二叉树问题
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 #
 class BinaryTree:
     def __init__(self, root: TreeNode):
@@ -83,6 +83,16 @@ class BinaryTree:
     def get_father_node(self, o: TreeNode) -> TreeNode: # 获取父节点（如果有，否则为None）
         return self._node2father[o]
 
+    def get_lca(self, p: TreeNode, q: TreeNode) -> TreeNode: # 获取该树中两个指定节点的最近公共祖先（如果有，否则为None）
+        s = set()
+        while p:
+            s.add(p)
+            p = self.get_father_node(p)
+        while q:
+            if q in s: return q
+            q = self.get_father_node(q)
+        return None
+
     def get_left_bro_node(self, o: TreeNode) -> TreeNode: # 获取左兄弟节点（如果有，否则为None）
         return self._node2leftbro[o]
 
@@ -119,5 +129,5 @@ class BinaryTree:
     def get_subtree_sum(self, o: TreeNode) -> int: # 获取子节点的值总和
         return self._subtree_sum[o]
 
-    def get_height(self):
+    def get_height(self): # 获取树的高度
         return self._height
