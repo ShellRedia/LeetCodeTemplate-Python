@@ -1,3 +1,4 @@
+from collections import *
 # 前缀树, 注意要灵活修改，否则也可能超时:
 # insert: 插入一个串; search_count: 指定串出现的次数; pre_count: 指定前缀出现的次数
 class TrieNode:
@@ -38,6 +39,3 @@ class Trie:
             cur = cur.children[x]
             rnt = cur.cnt
         return rnt
-trie = Trie()
-
-
