@@ -11,11 +11,11 @@ class Node:
         return "{}, {}, {}, {}".format(self.val, self.v, self.next, self.w)
 
 class Dinic:
-    def __init__(self, s, t):
+    def __init__(self, src, dst, n=5010):
         self.nodes = [Node() for _ in range(2)]
         self.top = 1
-        self.s, self.t = s, t
-        self.N = 5010
+        self.s, self.t = src, dst
+        self.N = n
         self.head, self.vis, self.dist = [0] * self.N, [0] * self.N, [inf] * self.N
         self.cost, self.maxflow = 0, 0
     
@@ -86,5 +86,5 @@ class Dinic:
 #     for i in range(m):
 #         u, v, val, w = map(int, input().split())
 #         dinic.add_edge(u , v, val, w)
-#     flow, cost = dinic.get_min_cost_max_flow()
-#     print(flow, cost)
+#     ans, cost = dinic.get_min_cost_max_flow()
+#     print(ans, cost)
