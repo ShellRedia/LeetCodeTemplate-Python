@@ -40,9 +40,46 @@
 
 [网格广搜](./graph/GridSearch.py)
 
-[]
+[欧拉回路,即一笔画问题(Hierholzer)](./graph/Hierholzer.py)
+
+[割点与桥(Tarjan)](./graph/Tarjan.py)
+
+[拓扑排序](./graph/TopologicalSort.py)
+
+[并查集](./graph/UnionFind.py)
 
 
+### 贪心
+
+[将所有元素修改为同一个值](./greedy/MedianMove.py)
+
+### 区间
+
+[有序且合并的区间](./interval/Interval.py)
+
+### 查询
+
+[二维差分](./query/Difference-2D.py)
+
+[质数(欧拉筛)](./query/Prime.py)
+
+### 字符串
+
+[回文子串数量(Manacher)](./string/Manacher.py)
+
+[滚动哈希(单进制)](./string/RollingHash.py)
+
+[滚动哈希(双进制)](./string/RollingHash2.py)
+
+### 树
+
+[二叉树(已预处理)](./tree/BinaryTree.py)
+
+[常规树(已预处理)](./tree/GeneralTree.py)
+
+[线段树](./tree/SegmentTree.py)
+
+[前缀树](./tree/Trie.py)
 
 ### 力扣未解之谜：
 

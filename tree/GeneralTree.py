@@ -54,6 +54,19 @@ class GeneralTree:
         self.parents, self.depth = parents, depth
         self.td = TreeDoubling(parents, n)
 
+        dm1, dm2 = Counter(), Counter()
+        self.diameter = -inf
+        def dfs(x, p):
+            for y, w in self.g[x]:
+                if y != p:
+                    dfs(y, x)
+                    t = dm1[y] + w
+                    if t > dm1[x]:
+                        dm2[x], dm1[x] = dm1[x], t
+                    elif t > dm2[x]: dm2[x] = t
+            self.diameter = max(self.diameter, dm1[x] + dm2[x])
+        dfs(edges[0][0], -1)
+
     def get_node_parent(self, x):
         return self.parents[x]
 
@@ -69,3 +82,6 @@ class GeneralTree:
             return len(set(self.td.get_Kth_ancestor(x, lmt) for x in nodes)) == 1
         k = bisect_left(range(mn_depth), True, key=check)
         return self.td.get_Kth_ancestor(nodes[0], k)
+    
+    def get_diameter(self):
+        return self.diameter
