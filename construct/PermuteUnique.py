@@ -1,4 +1,4 @@
-# 无重复全排列:
+# 无重复全排列, 还有一种不断 next_permutation的方法也可得到这结果:
 class PermuteUnique:
     def __init__(self, nums):
         nums.sort()

@@ -61,11 +61,11 @@ class Dinic:
                 pushed = self.dfs(self.s, inf)
         return rnt
 
-if __name__=="__main__":
-    m, n = [int(x) for x in input().split()]
-    edges = []
-    for _ in range(m):
-        x, y, w = [int(k) for k in input().split()]
-        edges.append((x-1, y-1, w))
-    dinic = Dinic(n, edges, 0, n-1)
-    print(dinic.flow())
+# if __name__=="__main__":
+#     m, n = [int(x) for x in input().split()]
+#     edges = []
+#     for _ in range(m):
+#         x, y, w = [int(k) for k in input().split()]
+#         edges.append((x-1, y-1, w))
+#     dinic = Dinic(n, edges, 0, n-1)
+#     print(dinic.flow())
