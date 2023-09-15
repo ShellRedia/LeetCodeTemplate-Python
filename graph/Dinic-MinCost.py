@@ -86,5 +86,5 @@ class Dinic:
 #     for i in range(m):
 #         u, v, val, w = map(int, input().split())
 #         dinic.add_edge(u , v, val, w)
-#     ans, cost = dinic.get_min_cost_max_flow()
-#     print(ans, cost)
+#     flow, cost = dinic.get_min_cost_max_flow()
+#     print(flow, cost)
