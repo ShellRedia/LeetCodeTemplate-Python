@@ -28,7 +28,7 @@ class Dinic:
         self.nodes[self.top].next = self.head[u]
         self.head[u] = self.top
     
-    def add_edge(self, u, v, val, w):
+    def add_edge(self, u, v, val, w=0):
         self._add_edge(u , v, val, w)
         self._add_edge(v, u, 0, -w)
     
@@ -72,7 +72,7 @@ class Dinic:
             i = self.nodes[i].next
         return used
 
-    def get_min_cost_max_flow(self):
+    def get_max_flow_min_cost(self):
         while self.spfa():
             self.vis[self.t] = 1
             while self.vis[self.t]:
@@ -85,6 +85,6 @@ class Dinic:
 #     dinic = Dinic(s, t)
 #     for i in range(m):
 #         u, v, val, w = map(int, input().split())
-#         dinic.add_edge(u , v, val, w)
-#     ans, cost = dinic.get_min_cost_max_flow()
+#         dinic.add_edge(u , v, val, w) # val->流量，w->费用
+#     ans, cost = dinic.get_max_flow_min_cost()
 #     print(ans, cost)

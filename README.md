@@ -65,6 +65,8 @@
 
 ### 字符串
 
+[KMP](./string/KMP.py)
+
 [回文子串数量(Manacher)](./string/Manacher.py)
 
 [滚动哈希(单进制)](./string/RollingHash.py)
