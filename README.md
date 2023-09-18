@@ -24,6 +24,8 @@
 
 [最短递增子序列](./dp/LIS.py)
 
+[换根DP(lc:834. 树中距离之和)](./dp/RerootingDP.py)
+
 [树上倍增-树或基环树,单纯找节点](./dp/TreeDoubling.py)
 
 [树上倍增2-树或基环树,带值传递](./dp/TreeDoubling2.py)
