@@ -21,3 +21,8 @@ class UnionFind:
         if x != y: self.parent[x] = y
     def get_group_count(self):
         return len(set(self.find(x) for x in self.parent))
+
+# if __name__=='__main__':
+#     uf = UnionFind()
+#     uf.merge(x, y)
+#     uf.find(x)

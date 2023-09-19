@@ -8,7 +8,7 @@ class MatrixPow:
         self.MOD = 10 ** 9 + 7
 
     # 矩阵乘法
-    def multiply(self, a: List[List[int]], b: List[List[int]]) -> List[List[int]]:
+    def multiply(self, a: list[list[int]], b: list[list[int]]) -> list[list[int]]:
         c = [[0 for _ in range(self.n)] for _ in range(self.n)]
         for i in range(self.n):
             for j in range(self.n):
@@ -18,7 +18,7 @@ class MatrixPow:
         return c
 
     # 矩阵快速幂
-    def pow(self, k: int) -> List[List[int]]:
+    def pow(self, k: int) -> list[list[int]]:
         res = [[0 for _ in range(self.n)] for _ in range(self.n)]
         a = self.matrix
         for i in range(self.n): res[i][i] = 1

@@ -1,0 +1,20 @@
+{
+    // 枚举
+	"enumerate":{
+		"prefix": "enumerate",
+		"body":[
+			"for i, x in enumerate(nums):"
+			"	"
+		],
+		"description":"enumerate"
+	},
+	// 遍历字典 for k, v in dct.items():
+	"dictionary iteration":{
+		"prefix": "items",
+		"body":[
+			"for k, v in dct.items():",
+			"	k"
+		],
+		"description":"dictionary iteration"
+	},
+}

@@ -1,0 +1,19 @@
+{
+	// check function
+	"check function":{
+		"prefix": "check",
+		"body":[
+			"def check(lmt):",
+			"	rnt = 0",
+			"	return rnt <= lmt"
+		],
+		"description":"check function"
+	},
+	"binary check":{
+		"prefix": "binary",
+		"body":[
+			"bisect_left(range(10 ** 10), True, key=check)"
+		],
+		"description":"binary check"
+	},
+}

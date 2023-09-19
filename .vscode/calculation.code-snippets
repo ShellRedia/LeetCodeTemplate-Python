@@ -1,0 +1,10 @@
+{
+    // 求众数
+	"mode of an array":{
+		"prefix": "max_cnt",
+		"body":[
+			"max_val, max_cnt = Counter(nums).most_common(1)[0]"
+		],
+		"description":"mode of an array"
+	}, 
+}

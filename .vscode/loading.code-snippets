@@ -1,0 +1,33 @@
+{
+	"Importing": {
+		"prefix": "leetcode_package",
+		"body": [
+			"from collections import *",
+			"from sortedcontainers import *",
+			"from heapq import *",
+			"from sys import *",
+			"from math import *",
+			"from itertools import *",
+			"from functools import *",
+			"from string import *",
+			"from bisect import *",
+			"from typing import *"
+		],
+		"description": "leetcode default imported packages",
+	},
+	"Reading": {
+		"prefix": "readline",
+		"body": [
+			"arr = [int(x) for x in input().split()]"
+		],
+		"description": "readline",
+	},
+	"Main": {
+		"prefix": "main",
+		"body": [
+			"if __name__=='__main__':",
+			"	pass"
+		],
+		"description": "main",
+	}
+}

@@ -21,3 +21,7 @@ class PermuteUnique:
 
     def get_permutation(self):
         return self.perm
+
+# if __name__=="__main__":
+#     perm = PermuteUnique(nums)
+#     perm.get_permutation()

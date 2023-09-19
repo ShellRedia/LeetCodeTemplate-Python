@@ -1,0 +1,30 @@
+{
+    // 矩阵展平 
+	"matrix flatten":{
+		"prefix": "flatten",
+		"body":[
+			"[x for y in mat for x in y]"
+		],
+		"description":"flatten"
+	},
+	// 前缀和
+	"prefix sum":{
+		"prefix": "acc",
+		"body":[
+			"acc = [0] + list(accumulate(nums))"
+		],
+		"description":"prefix sum"
+	},
+	// 差分数组
+	"diff array":{
+		"prefix": "diff",
+		"body":[
+			"diff = [0] * (n+2)",
+			"for l, r in nums:",
+			"	diff[l] += 1",
+			"	diff[r+1] -= 1",
+			"nums2 = list(accumulate(diff))"
+		],
+		"description":"prefix sum"
+	},
+}

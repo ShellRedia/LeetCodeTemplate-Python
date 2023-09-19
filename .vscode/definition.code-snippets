@@ -1,0 +1,34 @@
+{
+	// 邻接表
+	"adjacency list":{
+		"prefix": "g = defaultdict(list)",
+		"body":[
+			"g = defaultdict(list)"
+		],
+		"description":"adjacency list"
+	},
+	// 平衡树
+	"sorted list":{
+		"prefix": "sl = SortedList()",
+		"body":[
+			"sl = SortedList()"
+		],
+		"description":"adjacency list"
+	},
+	// 计数
+	"counter definition":{
+		"prefix": "cnts = Counter()",
+		"body":[
+			"cnts = Counter()"
+		],
+		"description":"counter definition"
+	},
+	// 初始化矩阵
+	"matrix initialization":{
+		"prefix": "matrix init",
+		"body":[
+			"mat = [[0 for _ in range(n)] for _ in range(m)]"
+		],
+		"description":"matrix initialization"
+	},
+}

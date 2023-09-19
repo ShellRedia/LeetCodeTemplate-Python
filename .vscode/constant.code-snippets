@@ -1,0 +1,49 @@
+{
+    // 搜索方向
+	"directions-4":{
+		"prefix": "d4",
+		"body":[
+			"for dx, dy in (0, 1), (1, 0), (-1, 0), (0, -1):",
+			"	nx, ny = x + dx, y + dy",
+			"	if 0 <= nx < m and 0 <= ny < n:",
+			"		"
+		],
+		"description":"directions-4"
+	},
+	"directions-8":{
+		"prefix": "d8",
+		"body":[
+			"for dx, dy in (0, 1), (1, 0), (-1, 0), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1):",
+			"	nx, ny = x + dx, y + dy",
+			"	if 0 <= nx < m and 0 <= ny < n:",
+			"		"
+		],
+		"description":"directions-8"
+	},
+    "directions-12":{
+		"prefix": "d12",
+		"body":[
+			"for dx, dy in (1, 2), (1, -2), (-1, 2), (-1, -2), (2, 1), (2, -1), (-2, 1), (-2, -1):",
+			"	nx, ny = x + dx, y + dy",
+			"	if 0 <= nx < m and 0 <= ny < n:",
+			"		"
+		],
+		"description":"directions-12"
+	},
+	// 特殊键盘
+	"keyboard-t9":{
+		"prefix": "t9",
+		"body":[
+			"t9 = {2:'abc', 3:'def', 4:'ghi', 5:'jkl', 6:'mno', 7:'pqrs', 8:'tuv', 9:'wxyz'}"
+		],
+		"description":"keyboard-t9"
+	},
+    // MOD
+	"MOD":{
+		"prefix": "MOD",
+		"body":[
+			"MOD = 10 ** 9 + 7"
+		],
+		"description":"MOD"
+	},
+}

@@ -1,5 +1,5 @@
 class RerootingDP:
-    def __init__(self, n:int, edges: List[List[int]]):
+    def __init__(self, n:int, edges: list[list[int]]):
         if n: g = [[] for _ in range(n)]
         for x, y in edges:
             g[x].append(y)
@@ -24,5 +24,5 @@ class RerootingDP:
                     reroot(y, x)  # x 是 y 的父节点
         reroot(0, -1)  # 0 没有父节点
         
-    def get_result(self) -> List[int]:
+    def get_result(self) -> list[int]:
         return self.result

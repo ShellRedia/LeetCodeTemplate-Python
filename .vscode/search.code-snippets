@@ -1,0 +1,11 @@
+{
+    "Breadth-First Search":{
+		"prefix": "bfs",
+		"body":[
+			"while dq:",
+			"	x = dq.popleft()",
+			"	dq.append(y)"
+		],
+		"description":"Breadth-First Search"
+	},
+}
