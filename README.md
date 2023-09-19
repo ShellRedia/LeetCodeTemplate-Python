@@ -2,12 +2,6 @@
 
 ![ContestScore](./competition/2023_08_24.png)
 
-### 构造
-
-[循环码](./construct/CyclicCode.py)
-
-[无重复全排列](./construct/PermuteUnique.py)
-
 ### 转换
 
 [10进制k进制相互转换(k<10)](./convert/BaseK.py)

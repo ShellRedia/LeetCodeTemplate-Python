@@ -19,7 +19,7 @@ class GridSearch:
             p, d = dq.popleft()
             for pd in product(*[range(-1, 2)] * len(grid.shape)):
                 if abs(sum(pd)) == mdist:
-                    t = tuple(map(lambda x: sum(x), zip(p, pd)))
+                    t = tuple(map(sum, zip(p, pd)))
                     if t in s and self.dist[t] > d + 1:
                         self.dist[t] = d + 1
                         dq.append((t, d + 1))

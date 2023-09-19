@@ -1,6 +1,6 @@
 {
     "Union-find":{
-		"prefix": "uf",
+		"prefix": "uf-class",
 		"body":[
 			"class IdentityDefaultDict(defaultdict):",
 			"    '''",

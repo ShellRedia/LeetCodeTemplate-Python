@@ -5,7 +5,22 @@
 		"body":[
 			"[x for y in mat for x in y]"
 		],
-		"description":"flatten"
+	},
+	// 十进制转k进制
+	"digit to k":{
+		"prefix": "digit2k",
+		"body":[
+			"def digit_to_k(num: int, k: int) -> str:",
+			"    if num == 0: return '0'",
+			"    flag = '-' if num < 0 else ''",
+			"    num = abs(num)",
+			"    result = ''",
+			"    while num > 0:",
+			"        num, remainder = divmod(num, k)",
+			"        result = str(remainder) + result",
+			"    return flag + result",
+			"num_str_k = digit_to_k(num, k)",
+		],
 	},
 	// 前缀和
 	"prefix sum":{
@@ -13,7 +28,6 @@
 		"body":[
 			"acc = [0] + list(accumulate(nums))"
 		],
-		"description":"prefix sum"
 	},
 	// 差分数组
 	"diff array":{
@@ -25,6 +39,81 @@
 			"	diff[r+1] -= 1",
 			"nums2 = list(accumulate(diff))"
 		],
-		"description":"prefix sum"
+	},
+	// 链表转数组 
+	"ListNode to array":{
+		"prefix": "listnode2arr",
+		"body":[
+			"def ListNode2Array(head):",
+			"    arr = []",
+			"    while head:",
+			"        arr.append(head.val)",
+			"        head = head.next",
+			"    return arr",
+			"arr = ListNode2Array(head)",
+		],
+	},
+	// 链表转数组 
+	"array to ListNode":{
+		"prefix": "arr2listnode",
+		"body":[
+			"def Array2ListNode(arr):",
+			"    cur = head = ListNode()",
+			"    for x in arr:",
+			"        cur.next = ListNode(x)",
+			"        cur = cur.next",
+			"    return head.next",
+			"head = Array2ListNode(arr)",				
+		],
+	},
+	// 带括号的字符串转嵌套数组
+	"brackets to nested array":{
+		"prefix": "bracket",
+		"body":[
+			"# 将包含括号的字符串转换为嵌套的多维数组，以便后续处理 O(n^2)",
+			"def Brackets2NestedArray(s: str, left_mark='(', right_mark=')')->list[str]:",
+			"    if not s: return []",
+			"    def f(s):",
+			"        if left_mark not in s: return [s]",
+			"        rnt, cnt, t = [], 0, ''",
+			"        for c in s:",
+			"            if c == left_mark:",
+			"                if cnt == 0 and t: rnt.append(t)",
+			"                cnt += 1",
+			"                t = ''",
+			"            elif c == right_mark:",
+			"                cnt -= 1",
+			"                if cnt == 0 and t: rnt.append(f(t))",
+			"                t = ''",
+			"            else: t += c",
+			"        if t: rnt.append(t)",
+			"        return rnt",
+			"    return f(s)",
+			"nested_arr = Brackets2NestedArray(s, '(', ')') # s = '(a,b)c(d,e)f' -> [['a,b'], 'c', ['d,e'], 'f']",
+		],
+	},
+	// 数组转二叉树
+	"array to binary search tree":{
+		"prefix": "arr2bst",
+		"body":[
+			"def Array2BST(arr):",
+			"    if not arr: return None",
+			"    root = TreeNode(arr[0])",
+			"    for x in arr[1:]:",
+			"        o = root",
+			"        while o:",
+			"            if x > o.val:",
+			"                if o.right: o = o.right",
+			"                else:",
+			"                    o.right = TreeNode(x)",
+			"                    break",
+			"            else:",
+			"                if o.left: o = o.left",
+			"                else:",
+			"                    o.left = TreeNode(x)",
+			"                    break",
+			"    return root",
+			"root = Array2BST(arr)"
+		]
 	},
 }

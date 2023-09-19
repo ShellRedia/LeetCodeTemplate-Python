@@ -60,6 +60,3 @@ class ConnectedComponent:
 
     def is_adjacent_by_id(self, x, y) -> list:
         return x in self.adjacency[y]
-
-    def get_all_values(self) -> list:
-        return sorted(self.val2comp_ids.keys())

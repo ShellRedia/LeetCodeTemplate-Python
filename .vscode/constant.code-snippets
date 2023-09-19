@@ -46,4 +46,17 @@
 		],
 		"description":"MOD"
 	},
+	// cyclic_code
+	"cyclic_code":{
+		"prefix": "cyclic",
+		"body":[
+			"def cyclic_code(n):",
+			"    if n <= 0: return []",
+			"    codes = ['0', '1']",
+			"    for i in range(n - 1): codes = [code + '0' for code in codes] + [code + '1' for code in reversed(codes)]",
+			"    return codes",
+			"cyc_lst = cyclic_code(n) # n = 2: ['00', '10', '11', '01']",
+		],
+		"description":"cyclic_code"
+	},
 }

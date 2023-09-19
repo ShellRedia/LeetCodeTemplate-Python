@@ -8,7 +8,7 @@
 		],
 		"description":"enumerate"
 	},
-	// 遍历字典 for k, v in dct.items():
+	// 遍历字典
 	"dictionary iteration":{
 		"prefix": "items",
 		"body":[
@@ -16,5 +16,53 @@
 			"	k"
 		],
 		"description":"dictionary iteration"
+	},
+	// 无重复全排列
+	"permutation-unique":{
+		"prefix": "perm_uni",
+		"body":[
+			"def permutation_unique(nums):",
+			"    nums.sort()",
+			"    perm, used, path = [], [False] * len(nums), []",
+			"",
+			"    def backtracking():",
+			"        # 终止条件",
+			"        if len(path) == len(nums):",
+			"            perm.append(path.copy())",
+			"            return",
+			"        for i in range(len(nums)):",
+			"            if not used[i]:",
+			"                if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]: continue",
+			"                used[i] = True",
+			"                path.append(nums[i])",
+			"                backtracking()",
+			"                path.pop()",
+			"                used[i] = False",
+			"    backtracking()",
+			"    return perm",
+			"perm_lst = permutation_unique(nums)",
+		],
+		"description":"permutation-unique"
+	},
+	// 下一个排列
+	"permutation-next":{
+		"prefix": "perm_next",
+		"body":[
+			"def next_permutation(nums):",
+			"    k, n = -1, len(nums)",
+			"    for i in range(n-1):",
+			"        if nums[i] < nums[i+1]: k = i",
+			"    if k == -1: ",
+			"        nums[:] = nums[::-1]",
+			"        return nums",
+			"    l = -1",
+			"    for i in range(n):",
+			"        if nums[i] > nums[k]: l = i",
+			"    nums[l], nums[k] = nums[k], nums[l]",
+			"    nums[k+1:] = nums[k+1:][::-1]",
+			"    return nums",
+			"nums = next_permutation(nums)",			
+		],
+		"description":"permutation-next"
 	},
 }
