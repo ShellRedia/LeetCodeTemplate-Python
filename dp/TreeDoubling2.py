@@ -11,7 +11,7 @@ class TreeDoubling:
         for i in range(self.m):
             for x in parents:
                 p, s = pa[x][i]
-                if p == None: break
+                if p is None: break
                 pp, ps = pa[p][i]
                 pa[x][i+1] = (pp, ps + s) # ps + s 是累加关系，根据需要修改
         self.pa = pa
@@ -24,6 +24,9 @@ class TreeDoubling:
         for j in range(k.bit_length()):
             if (k >> j) & 1:
                 node, s = self.pa[node][j]
-                if node == None: return None, 0
+                if node is None: return None, 0
                 s0 += s # 与 ps + s 的累加关系对应修改
         return node, s0
+
+# tree_doubling = TreeDoubling(parents=parents_dct, k=10**10)
+# node, s0 = tree_doubling.get_Kth_ancestor(node=node, k=k)

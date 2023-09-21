@@ -6,9 +6,19 @@
 			"[x for y in mat for x in y]"
 		],
 	},
+	// 离散化 
+	"discretization":{
+		"prefix": "discretize",
+		"body":[
+			
+			"t = set(sorted(nums))",
+			"discretized_dct = dict(zip(t, range(len(t))))",
+			"discretized_nums = [discretized_dct[x] for x in nums]",
+		],
+	},
 	// 十进制转k进制
 	"digit to k":{
-		"prefix": "digit2k",
+		"prefix": "digit_to_k",
 		"body":[
 			"def digit_to_k(num: int, k: int) -> str:",
 			"    if num == 0: return '0'",
@@ -40,9 +50,28 @@
 			"nums2 = list(accumulate(diff))"
 		],
 	},
+	// 二维差分
+	"diff array-2D":{
+		"prefix": "diff_2d",
+		"body":[
+			"diff = [[0] * (m + 2) for _ in range(n + 2)]",
+			"for r1, r2, c1, c2, x in rects:",
+			"    # 将区域 r1<=r<=r2 && c1<=c<=c2 上的数都加上 x",
+			"    # 多 +1 是为了方便求后面用二维前缀和复原",
+			"    diff[r1 + 1][c1 + 1] += x",
+			"    diff[r1 + 1][c2 + 2] -= x",
+			"    diff[r2 + 2][c1 + 1] -= x",
+			"    diff[r2 + 2][c2 + 2] += x",
+			"# 根据差分矩阵复原 (二维前缀和)，得到矩阵的真实值:",
+			"for i in range(1, n + 1):",
+			"    for j in range(1, m + 1):",
+			"        diff[i][j] += diff[i][j - 1] + diff[i - 1][j] - diff[i - 1][j - 1]",
+			"real_values = diff # 二维数组",
+		],
+	},
 	// 链表转数组 
 	"ListNode to array":{
-		"prefix": "listnode2arr",
+		"prefix": "listnode_to_arr",
 		"body":[
 			"def ListNode2Array(head):",
 			"    arr = []",
@@ -55,7 +84,7 @@
 	},
 	// 链表转数组 
 	"array to ListNode":{
-		"prefix": "arr2listnode",
+		"prefix": "arr_to_listnode",
 		"body":[
 			"def Array2ListNode(arr):",
 			"    cur = head = ListNode()",
@@ -68,7 +97,7 @@
 	},
 	// 带括号的字符串转嵌套数组
 	"brackets to nested array":{
-		"prefix": "bracket",
+		"prefix": "bracket_to_nestedarr",
 		"body":[
 			"# 将包含括号的字符串转换为嵌套的多维数组，以便后续处理 O(n^2)",
 			"def Brackets2NestedArray(s: str, left_mark='(', right_mark=')')->list[str]:",
@@ -92,9 +121,9 @@
 			"nested_arr = Brackets2NestedArray(s, '(', ')') # s = '(a,b)c(d,e)f' -> [['a,b'], 'c', ['d,e'], 'f']",
 		],
 	},
-	// 数组转二叉树
+	// 数组转二叉搜索树
 	"array to binary search tree":{
-		"prefix": "arr2bst",
+		"prefix": "arr_to_bst",
 		"body":[
 			"def Array2BST(arr):",
 			"    if not arr: return None",

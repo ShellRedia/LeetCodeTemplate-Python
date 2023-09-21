@@ -1,28 +1,32 @@
 class RerootingDP:
-    def __init__(self, n:int, edges: list[list[int]]):
-        if n: g = [[] for _ in range(n)]
-        for x, y in edges:
-            g[x].append(y)
-            g[y].append(x)
-        
-        self.result, size = [0] * n,  [1] * n
+    def __init__(self, n:int, edges=[], undirected=True):
+        self.n = n
+        self.g = [[] for _ in range(n)]
+        self.undirected = undirected
+        for x, y, w in edges: self.add_edge(x, y, w)
+    
+    def add_edge(self, x, y, w):
+        self.g[x].append((y, w))
+        self.g[y].append((x, w * 2 * int(self.undirected) - 1))
 
-        # 专心计算0号节点的结果
+    def get_result(self) -> list[int]:
+        result, size = [0] * self.n,  [1] * self.n
+        # ** 专心计算0号节点的结果 **
         def dfs(x: int, fa: int, depth: int) -> None:
-            self.result[0] += depth  # depth 为 0 到 x 的距离
-            for y in g[x]:  # 遍历 x 的邻居 y
+            result[0] += depth  # depth 为 0 到 x 的距离
+            for y, w in self.g[x]:  # 遍历 x 的邻居 y
                 if y != fa:  # 避免访问父节点
-                    dfs(y, x, depth + 1)  # x 是 y 的父节点
+                    dfs(y, x, depth + w)  # x 是 y 的父节点
                     size[x] += size[y]  # 累加 x 的儿子 y 的子树大小
         dfs(0, -1, 0)  # 0 没有父节点
-
-        # 只需要考虑 节点 x 和 y 的相对关系即可
+        # ** 只需要考虑相邻节点 x 和 y 的相对关系即可 **
         def reroot(x: int, fa: int) -> None:
-            for y in g[x]:  # 遍历 x 的邻居 y
+            for y, w in self.g[x]:  # 遍历 x 的邻居 y
                 if y != fa:  # 避免访问父节点
-                    self.result[y] = self.result[x] + n - 2 * size[y] 
+                    result[y] = result[x] + self.n - 2 * size[y] 
                     reroot(y, x)  # x 是 y 的父节点
         reroot(0, -1)  # 0 没有父节点
-        
-    def get_result(self) -> list[int]:
-        return self.result
+        return result
+
+# rerooting_dp = RerootingDP(n=n, edges=edges, undirected=True)
+# res_lst = rerooting_dp.get_result()

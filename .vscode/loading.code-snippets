@@ -11,16 +11,16 @@
 			"from functools import *",
 			"from string import *",
 			"from bisect import *",
-			"from typing import *"
+			"from typing import *",
+			"from graphlib import *",
+			"import numpy as np",
 		],
-		"description": "leetcode default imported packages",
 	},
 	"Reading": {
 		"prefix": "readline",
 		"body": [
 			"arr = [int(x) for x in input().split()]"
 		],
-		"description": "readline",
 	},
 	"Main": {
 		"prefix": "main",
@@ -28,6 +28,5 @@
 			"if __name__=='__main__':",
 			"	pass"
 		],
-		"description": "main",
 	}
 }

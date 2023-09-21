@@ -6,7 +6,6 @@
 			"for i, x in enumerate(nums):"
 			"	"
 		],
-		"description":"enumerate"
 	},
 	// 遍历字典
 	"dictionary iteration":{
@@ -15,7 +14,6 @@
 			"for k, v in dct.items():",
 			"	k"
 		],
-		"description":"dictionary iteration"
 	},
 	// 无重复全排列
 	"permutation-unique":{
@@ -42,7 +40,6 @@
 			"    return perm",
 			"perm_lst = permutation_unique(nums)",
 		],
-		"description":"permutation-unique"
 	},
 	// 下一个排列
 	"permutation-next":{
@@ -63,6 +60,5 @@
 			"    return nums",
 			"nums = next_permutation(nums)",			
 		],
-		"description":"permutation-next"
 	},
 }

@@ -2,21 +2,16 @@
 
 ![ContestScore](./competition/2023_08_24.png)
 
-### 转换
-
-[10进制k进制相互转换(k<10)](./convert/BaseK.py)
-
-[数组转二叉搜索树](./convert/BST.py)
-
-[链表数组相互转换](./convert/ListNode.py)
-
-[带括号的字符串转嵌套数组](./convert/Parentheses2NestedArray.py)
-
 ### 动态规划
 
 [数位DP(统计大于0的数量)](./dp/DigitDP.py)
 
-[最短递增子序列](./dp/LIS.py)
+    233. 数字 1 的个数
+    面试题 17.06. 2出现的次数
+    600. 不含连续1的非负整数
+    902. 最大为 N 的数字组合
+    1067. 范围内的数字计数
+    1397. 找到所有好字符串（有难度，需要结合一个经典字符串算法）
 
 [矩阵快速幂](./query/MatrixPow.py)
 
@@ -39,7 +34,17 @@
 
 [单源最短路径(Dijkstra)](./graph/Dijkstra.py)
 
+    2662. 前往目标的最小代价
+
+[最小费用最大网络流(Dinic)](./graph/Dinic-MinCost.py)
+
 [最大网络流(Dinic)](./graph/Dinic.py)
+
+    1947. 最大兼容性评分和
+    1349. 参加考试的最大学生数
+    LCP 04. 覆盖
+    1879. 两个数组最小的异或值之和
+    2172. 数组的最大与和
 
 [单源最短路径(Floyd)](./graph/Floyd.py)
 
@@ -49,14 +54,9 @@
 
 [割点与桥(Tarjan)](./graph/Tarjan.py)
 
-[拓扑排序](./graph/TopologicalSort.py)
+    1192. 查找集群内的关键连接
 
 [并查集](./graph/UnionFind.py)
-
-
-### 贪心
-
-[将所有元素修改为同一个值](./greedy/MedianMove.py)
 
 ### 区间
 

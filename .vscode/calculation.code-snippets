@@ -5,6 +5,72 @@
 		"body":[
 			"max_val, max_cnt = Counter(nums).most_common(1)[0]"
 		],
-		"description":"mode of an array"
 	}, 
+	// 拓扑排序
+	"Topological Sort":{
+		"prefix": "topo_sort",
+		"body":[
+			"ts = TopologicalSorter({c:{} for c in range(n)})",
+			"for c, pc in constrains:ts.add(c, pc)",
+			"topo_order = [] if ts._find_cycle() else list(ts.static_order())",
+		],
+	}, 
+	// 最长递增子序列
+	"Longest Increasing Subsequence":{
+		"prefix": "lis",
+		"body":[
+			"sl = SortedList()",
+			"for i, x in enumerate(nums):",
+			"    pos = sl.bisect_right((x, -i))",
+			"    if pos == len(sl): sl.add((x, -i))",
+			"    else:",
+			"        del sl[pos]",
+			"        sl.add((x, -i))",
+			"LIS = sl",			
+		],
+	}, 
+	// 中位数移动
+	"Median Move":{
+		"prefix": "median_move",
+		"body":[
+			"nums.sort()",
+			"acc = [0] + list(accumulate(nums))",
+			"n = len(nums)",
+			"min_move = acc[0] + acc[n] - 2 * acc[n//2] - nums[n//2] * (n & 1)",
+		],
+	},
+	// 最短编辑距离
+	"Edit Distance":{
+		"prefix": "edit_dist",
+		"body":[
+			"m, n = len(word1), len(word2)",
+			"@cache",
+			"def edit_dist(i, j):",
+			"    if i == m: return n-j",
+			"    if j == n: return m-i",
+			"    if word1[i] == word2[j]: return edit_dist(i+1, j+1)",
+			"    return min(edit_dist(i+1, j), edit_dist(i, j+1), edit_dist(i+1, j+1)) + 1",
+			"dist = edit_dist(0, 0)",			
+		],
+	},
+	// 单调栈
+	"monotonic stack":{
+		"prefix": "mono_stk",
+		"body":[
+			"def monotonic_stack(nums):",
+			"    g = defaultdict(list)",
+			"    for i, x in enumerate(nums):",
+			"        g[x].append(i)",
+			"    sl = SortedList([-1, len(nums)])",
+			"    # 左右小于目标值的最近位置: k->元素索引(位置), v->(left, right):左右边界索引",
+			"    less_dct = {} ",
+			"    for x in sorted(set(nums)):",
+			"        for i in g[x]:",
+			"            p = sl.bisect_left(i)",
+			"            less_dct[i] = (sl[p-1], sl[p])",
+			"        for i in g[x]: sl.add(i)",
+			"    return less_dct",
+			"less_pos_dct = monotonic_stack(heights)"
+		],
+	},
 }

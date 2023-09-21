@@ -2,10 +2,11 @@
 k 个 同样的方阵相乘
 '''
 class MatrixPow:
-    def __init__(self, matrix):
+    def __init__(self, matrix, is_mod=False):
         self.matrix = matrix
         self.n = len(matrix)
         self.MOD = 10 ** 9 + 7
+        self.is_mod = is_mod
 
     # 矩阵乘法
     def multiply(self, a: list[list[int]], b: list[list[int]]) -> list[list[int]]:
@@ -14,7 +15,7 @@ class MatrixPow:
             for j in range(self.n):
                 for k in range(self.n):
                     c[i][j] += a[i][k] * b[k][j] 
-                    #c[i][j] %= self.MOD
+                    if self.is_mod: c[i][j] %= self.MOD
         return c
 
     # 矩阵快速幂
@@ -29,11 +30,9 @@ class MatrixPow:
             k //= 2
         return res
 
-# if __name__=="__main__":
-#         m = [
-#             [1, 1],
-#             [1, 0]
-#         ]
-#         mp = MatrixPow(m)
-#         m = mp.pow(k)
-#         return m[0][1]
+# mat = [
+#     [1, 1],
+#     [1, 0]
+# ]
+# matrix_pow = MatrixPow(mat)
+# mat = matrix_pow.pow(k=k)

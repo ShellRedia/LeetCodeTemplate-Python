@@ -6,6 +6,5 @@
 			"	x = dq.popleft()",
 			"	dq.append(y)"
 		],
-		"description":"Breadth-First Search"
 	},
 }

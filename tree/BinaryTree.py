@@ -12,12 +12,8 @@ class TreeNode:
 '''
 --- 从此处复制 ---
 '''
-# 树上倍增 查询第 k 个祖先节点：leetcode 1483
+
 class TreeDoubling:
-    '''
-    parents: 父节点关系的数组，parents[i] 是 i 的父节点
-    k: 最大查询范围，可以很大（10**10）,反正会指数折叠
-    '''
     def __init__(self, parents, k):
         self.m = k.bit_length()
         pa = {}
@@ -27,15 +23,12 @@ class TreeDoubling:
             for x in parents:
                 if pa[x][i]: pa[x][i+1] = pa[pa[x][i]][i]
         self.pa = pa
-    '''
-    node: 要查询的节点
-    k: 与节点x的距离
-    '''
+
     def get_Kth_ancestor(self, node, k):
         for i in range(k.bit_length()):
             if (k >> i) & 1:
                 node = self.pa[node][i]
-                if node == None: return None # node 可能为 0
+                if node is None: return None
         return node
 
 class BinaryTree:
@@ -171,3 +164,5 @@ class BinaryTree:
 
     def get_height(self) -> int: # 获取树的高度
         return self._height
+
+# binary_tree = BinaryTree(root)

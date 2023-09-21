@@ -1,6 +1,6 @@
 # 抄的板子，其中需要修改的是 _do 和 _query 的规则，用于区间更新和区间查询
 class LazySegmentTree:
-    def __init__(self, nums: List[int]):
+    def __init__(self, nums: list[int]):
         self.n = len(nums)
         self.nums = nums
         self.ones = [0] * (4 * self.n)
@@ -56,3 +56,5 @@ class LazySegmentTree:
 
     def query(self, ql: int, qr: int) -> int:
         return self._query(0, 0, self.n - 1, ql, qr)
+
+# segment_tree = LazySegmentTree(nums=nums)

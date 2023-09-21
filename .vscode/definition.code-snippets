@@ -5,7 +5,6 @@
 		"body":[
 			"g = defaultdict(list)"
 		],
-		"description":"adjacency list"
 	},
 	// 平衡树
 	"sorted list":{
@@ -13,7 +12,6 @@
 		"body":[
 			"sl = SortedList()"
 		],
-		"description":"adjacency list"
 	},
 	// 计数
 	"counter definition":{
@@ -21,7 +19,6 @@
 		"body":[
 			"cnts = Counter()"
 		],
-		"description":"counter definition"
 	},
 	// 初始化矩阵
 	"matrix initialization":{
@@ -29,6 +26,5 @@
 		"body":[
 			"mat = [[0 for _ in range(n)] for _ in range(m)]"
 		],
-		"description":"matrix initialization"
 	},
 }

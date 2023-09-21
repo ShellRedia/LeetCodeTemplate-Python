@@ -8,7 +8,6 @@
 			"	if 0 <= nx < m and 0 <= ny < n:",
 			"		"
 		],
-		"description":"directions-4"
 	},
 	"directions-8":{
 		"prefix": "d8",
@@ -18,17 +17,15 @@
 			"	if 0 <= nx < m and 0 <= ny < n:",
 			"		"
 		],
-		"description":"directions-8"
 	},
     "directions-12":{
-		"prefix": "d12",
+		"prefix": "d1-2",
 		"body":[
 			"for dx, dy in (1, 2), (1, -2), (-1, 2), (-1, -2), (2, 1), (2, -1), (-2, 1), (-2, -1):",
 			"	nx, ny = x + dx, y + dy",
 			"	if 0 <= nx < m and 0 <= ny < n:",
 			"		"
 		],
-		"description":"directions-12"
 	},
 	// 特殊键盘
 	"keyboard-t9":{
@@ -36,7 +33,6 @@
 		"body":[
 			"t9 = {2:'abc', 3:'def', 4:'ghi', 5:'jkl', 6:'mno', 7:'pqrs', 8:'tuv', 9:'wxyz'}"
 		],
-		"description":"keyboard-t9"
 	},
     // MOD
 	"MOD":{
@@ -46,7 +42,7 @@
 		],
 		"description":"MOD"
 	},
-	// cyclic_code
+	// 循环码生成
 	"cyclic_code":{
 		"prefix": "cyclic",
 		"body":[
@@ -57,6 +53,37 @@
 			"    return codes",
 			"cyc_lst = cyclic_code(n) # n = 2: ['00', '10', '11', '01']",
 		],
-		"description":"cyclic_code"
+	},
+	// 获取质因数
+	"get prime factors of a number":{
+		"prefix": "prime_factors",
+		"body":[
+			"@cache",
+			"def get_prime_factors(n: int) -> list:",
+			"    factors, i = [], 2",
+			"    while i ** 2 <= n:",
+			"        if n % i: i += 1",
+			"        else:",
+			"            n //= i",
+			"            factors.append(i)",
+			"    if n > 1: factors.append(n)",
+			"    return factors",
+			"factors = get_prime_factors(n) # 包含重复元素"		
+		],
+	},
+	// 欧拉筛获取质数
+	"get prime numbers":{
+		"prefix": "prime_numbers",
+		"body":[
+			"N = 10 ** 7",
+			"primes = [True] * (N + 1)",
+			"primes[0] = primes[1] = False",
+			"p = 2",
+			"while p * p <= N:",
+			"    if primes[p]:",
+			"        for i in range(p * p, N + 1, p): primes[i] = False",
+			"    p += 1",
+			"prime_numbers = [i for i, is_prime in enumerate(primes) if is_prime]",
+		],
 	},
 }

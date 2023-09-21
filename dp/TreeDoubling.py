@@ -21,5 +21,5 @@ class TreeDoubling:
         for i in range(k.bit_length()):
             if (k >> i) & 1:
                 node = self.pa[node][i]
-                if node == None: return None
+                if node is None: return None
         return node
